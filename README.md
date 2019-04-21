@@ -1,7 +1,7 @@
 # assetManagmentSystem
 
 # Asset Feature
-This system will be very very helful to manage any companies IT support team.
+This system will be very very helful for any companies IT support team.
 1. register your PC
 2. Generate uniq Tag
 3. manage IP
