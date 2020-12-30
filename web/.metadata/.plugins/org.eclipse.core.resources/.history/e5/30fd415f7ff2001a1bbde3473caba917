@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DepartmentWiseAssetQtyTopSheet" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9480e11a-e22a-4614-8f9e-2d2ceaf65b09">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Asset Running DB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT 
+      ts.dept,
+      CAST(ts.Total AS CHAR),
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='Desktop' AND dept=ts.dept) AS "Desktop",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='Laptop' AND dept=ts.dept) AS "Laptop",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='Printer' AND dept=ts.dept) AS "Printer",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='Scanner' AND dept=ts.dept) AS "Scanner",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='Plotter' AND dept=ts.dept) AS "Plotter",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='IP Phone' AND dept=ts.dept) AS "IP Phone",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='Access Point' AND dept=ts.dept) AS "Access Point",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='SCLAVOS' AND dept=ts.dept) AS "SCLAVOS"
+FROM 
+
+(SELECT 
+      *,
+      COUNT(t.mtype) AS Total
+FROM 
+    topSheet t
+ GROUP BY t.dept)ts;]]>
+	</queryString>
+	<field name="dept" class="java.lang.String"/>
+	<field name="CAST(ts.Total AS CHAR)" class="java.lang.String"/>
+	<field name="Desktop" class="java.lang.String"/>
+	<field name="Laptop" class="java.lang.String"/>
+	<field name="Printer" class="java.lang.String"/>
+	<field name="Scanner" class="java.lang.String"/>
+	<field name="Plotter" class="java.lang.String"/>
+	<field name="IP Phone" class="java.lang.String"/>
+	<field name="Access Point" class="java.lang.String"/>
+	<field name="SCLAVOS" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="183" y="2" width="397" height="20" uuid="e4e7a756-0c01-40f1-a17d-1e82114bcd5d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FAKIR KNITWARES LTD.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="23" width="600" height="25" uuid="a1b0bd27-61aa-4e4c-9775-b3273d5714e1">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTMENT WISE IT ASSET QUANTITY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="100" height="30" uuid="2db3d12a-9cff-404a-ab13-abdb422515f4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="100" height="30" uuid="7c9aaf53-e9fa-46b6-8d1b-f0846badff57"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="0" width="100" height="30" uuid="fb9757f5-3f8c-488e-8173-aaf5e6ef1417"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Desktop]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="0" width="100" height="30" uuid="9b7a2453-6749-48ce-a130-233af09acbbf"/>
+				<text><![CDATA[Laptop]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="48" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="0" width="100" height="30" uuid="3302a8dd-4a12-420f-8c7b-484bfc1c5dfb"/>
+				<textFieldExpression><![CDATA[$F{dept}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="100" height="30" uuid="bf904525-8007-4510-a8c3-1effcdde1739"/>
+				<textFieldExpression><![CDATA[$F{CAST(ts.Total AS CHAR)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="0" width="100" height="30" uuid="cd6b1d91-2fbe-48a1-a685-a93a537d51b5"/>
+				<textFieldExpression><![CDATA[$F{Desktop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="100" height="30" uuid="0f03c9db-a3af-46bc-b39d-bbd9ec2c042d"/>
+				<textFieldExpression><![CDATA[$F{Laptop}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

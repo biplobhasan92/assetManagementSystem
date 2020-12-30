@@ -8,14 +8,14 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="COLUMN_22"/>
+			<item value="PI_Q"/>
+			<item value="column_25"/>
 			<item value="Times New"/>
 			<item value="gif"/>
 			<item value="San"/>
 			<item value=".gif"/>
 			<item value="Times"/>
-			<item value="Times New Roman"/>
-			<item value="Time"/>
-			<item value="Time Ro"/>
 		</list>
 		<list key="replacehistory">
 			<item value="SansSerif"/>

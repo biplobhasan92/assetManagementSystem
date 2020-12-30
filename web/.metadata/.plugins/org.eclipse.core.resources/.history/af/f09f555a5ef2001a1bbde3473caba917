@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DepartmentWiseAssetQtyTopSheet" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9480e11a-e22a-4614-8f9e-2d2ceaf65b09">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Asset Running DB"/>
+	<queryString>
+		<![CDATA[SELECT
+  -- empdata.id,
+  -- empdata.emp_name,
+  empdata.dept,
+  mdata.mtype,
+  COUNT(mdata.mtype) AS mCount
+FROM
+  empdata,
+  mdata,
+  masgndata,
+  deptlist,
+  main_deptlist
+WHERE mdata.fklid  = masgndata.fklid
+  AND masgndata.id = empdata.id
+  AND empdata.dept = deptlist.dept
+  AND deptlist.dept_id = main_deptlist.dept_id
+GROUP BY empdata.dept, mdata.mtype
+ORDER BY empdata.dept, mdata.mtype]]>
+	</queryString>
+	<field name="dept" class="java.lang.String"/>
+	<field name="mtype" class="java.lang.String"/>
+	<field name="mCount" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="183" y="2" width="397" height="20" uuid="e4e7a756-0c01-40f1-a17d-1e82114bcd5d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FAKIR KNITWARES LTD.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="23" width="600" height="25" uuid="a1b0bd27-61aa-4e4c-9775-b3273d5714e1">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTMENT WISE IT ASSET QUANTITY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
