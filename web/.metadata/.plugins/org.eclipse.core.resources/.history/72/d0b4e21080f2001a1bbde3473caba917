@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DepartmentWiseAssetQtyTopSheet" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9480e11a-e22a-4614-8f9e-2d2ceaf65b09">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Asset Running DB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT 
+      ts.dept,
+      CAST(ts.Total AS CHAR),
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='Desktop' AND dept=ts.dept) AS "Desktop",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='Laptop' AND dept=ts.dept) AS "Laptop",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='Printer' AND dept=ts.dept) AS "Printer",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='Scanner' AND dept=ts.dept) AS "Scanner",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='Plotter' AND dept=ts.dept) AS "Plotter",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='IP Phone' AND dept=ts.dept) AS "IP Phone",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='Access Point' AND dept=ts.dept) AS "Access Point",
+      (SELECT cast(COUNT(mtype) as char) FROM topSheet WHERE mtype='SCLAVOS' AND dept=ts.dept) AS "SCLAVOS"
+FROM 
+
+(SELECT 
+      *,
+      COUNT(t.mtype) AS Total
+FROM 
+    topSheet t
+ GROUP BY t.dept)ts;]]>
+	</queryString>
+	<field name="dept" class="java.lang.String"/>
+	<field name="CAST(ts.Total AS CHAR)" class="java.lang.String"/>
+	<field name="Desktop" class="java.lang.String"/>
+	<field name="Laptop" class="java.lang.String"/>
+	<field name="Printer" class="java.lang.String"/>
+	<field name="Scanner" class="java.lang.String"/>
+	<field name="Plotter" class="java.lang.String"/>
+	<field name="IP Phone" class="java.lang.String"/>
+	<field name="Access Point" class="java.lang.String"/>
+	<field name="SCLAVOS" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="183" y="2" width="397" height="20" uuid="e4e7a756-0c01-40f1-a17d-1e82114bcd5d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FAKIR KNITWARES LTD.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="23" width="600" height="25" uuid="a1b0bd27-61aa-4e4c-9775-b3273d5714e1">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTMENT WISE IT ASSET QUANTITY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="100" height="30" uuid="2db3d12a-9cff-404a-ab13-abdb422515f4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="80" height="30" uuid="7c9aaf53-e9fa-46b6-8d1b-f0846badff57"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="0" width="80" height="30" uuid="fb9757f5-3f8c-488e-8173-aaf5e6ef1417"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Desktop]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="80" height="30" uuid="9b7a2453-6749-48ce-a130-233af09acbbf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Laptop]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="0" width="60" height="30" uuid="72fcbc1d-5957-4e90-addb-74f650a51fee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Printer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="0" width="60" height="30" uuid="16f9d071-93c9-429e-86bf-8ea02baba74f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Scanner]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="481" y="0" width="60" height="30" uuid="7b3b193e-2f9d-4487-85e7-cb6e45a8070d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Plotter]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="541" y="0" width="80" height="30" uuid="5550eebf-6485-4902-b6a4-a0888f61bd9d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[IP Phone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="621" y="0" width="70" height="30" uuid="983737d8-bf74-46c4-a199-c201785dde35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Access Point]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="690" y="0" width="100" height="30" uuid="ffeddb76-c255-4f1a-907e-989daa1d904a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[SCLAVOS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="56" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="0" width="100" height="30" uuid="3302a8dd-4a12-420f-8c7b-484bfc1c5dfb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dept}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="80" height="30" uuid="bf904525-8007-4510-a8c3-1effcdde1739"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CAST(ts.Total AS CHAR)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="0" width="80" height="30" uuid="cd6b1d91-2fbe-48a1-a685-a93a537d51b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Desktop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="80" height="30" uuid="0f03c9db-a3af-46bc-b39d-bbd9ec2c042d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Laptop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="0" width="60" height="30" uuid="e6033108-566d-45e3-a5c7-eba0d7b94b34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Printer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="421" y="0" width="60" height="30" uuid="b3382e2f-ead6-4acc-8a9c-e82c6cce38b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Scanner}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="481" y="0" width="60" height="30" uuid="cadad73d-8fe5-406e-aef5-be1241da0536"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Plotter}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="541" y="0" width="80" height="30" uuid="ebe7c1a9-12ec-4aa4-b988-85fc866bd237"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{IP Phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="621" y="0" width="70" height="30" uuid="9db82c28-4935-4bb3-ad67-491ede581294"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Access Point}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="691" y="0" width="100" height="30" uuid="a0463721-e0be-42b9-a68f-6838cd502bc7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{SCLAVOS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
